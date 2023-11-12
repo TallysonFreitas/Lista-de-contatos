@@ -17,9 +17,14 @@ const contatoSlice = createSlice({
   reducers: {
     adicionar: (state, action: PayloadAction<ContatoItemType>) => {
       state.contatos = [...state.contatos, action.payload]
+    },
+    remover: (state, action: PayloadAction<number>) => {
+      state.contatos = state.contatos.filter(
+        (each) => each.telefone !== action.payload
+      )
     }
   }
 })
 
 export default contatoSlice.reducer
-export const { adicionar } = contatoSlice.actions
+export const { adicionar, remover } = contatoSlice.actions
