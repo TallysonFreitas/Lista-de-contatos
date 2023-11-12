@@ -6,7 +6,32 @@ const initialState = {
     {
       name: 'Tallyson Freitas',
       email: 'Tallyson.Freitas@gmail.com',
-      telefone: 230000000
+      telefone: 230000000,
+      id: 1
+    },
+    {
+      name: 'Erik Gomes',
+      email: 'Erik.Gomes@gmail.com',
+      telefone: 230000001,
+      id: 2
+    },
+    {
+      name: 'Fillipe Morais',
+      email: 'Fillipe.Morais@gmail.com',
+      telefone: 230000002,
+      id: 3
+    },
+    {
+      name: 'Eduardo Dantas',
+      email: 'Eduardo.Dantas@gmail.com',
+      telefone: 230000003,
+      id: 4
+    },
+    {
+      name: 'Murilo Paulino',
+      email: 'murilo.paulino@gmail.com',
+      telefone: 230000004,
+      id: 5
     }
   ]
 }
@@ -20,7 +45,7 @@ const contatoSlice = createSlice({
     },
     remover: (state, action: PayloadAction<number>) => {
       state.contatos = state.contatos.filter(
-        (each) => each.telefone !== action.payload
+        (each) => each.id !== action.payload
       )
     }
   }

@@ -4,6 +4,7 @@ export type ContatoItemType = {
   name: string
   email: string
   telefone: number
+  id: number
 }
 
 export const ContainerContatoItem = styled.div`

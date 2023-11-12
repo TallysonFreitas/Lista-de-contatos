@@ -8,7 +8,7 @@ import {
 } from './style'
 import { remover } from '../../store/reducers/contato'
 
-const ContatoItem = ({ name, email, telefone }: ContatoItemType) => {
+const ContatoItem = ({ name, email, telefone, id }: ContatoItemType) => {
   const dispatch = useDispatch()
 
   return (
@@ -19,7 +19,7 @@ const ContatoItem = ({ name, email, telefone }: ContatoItemType) => {
       <p>{telefone}</p>
       <CloseButton
         onClick={() => {
-          dispatch(remover(telefone))
+          dispatch(remover(id))
         }}
       >
         X

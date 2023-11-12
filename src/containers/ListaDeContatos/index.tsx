@@ -5,13 +5,14 @@ import { RootReducer } from '../../store'
 import { ContatoItemType } from '../../components/ContatoItem/style'
 
 const ListaDeContatos = () => {
-  const { contato } = useSelector((state: RootReducer) => state)
+  const { agenda } = useSelector((state: RootReducer) => state)
   return (
     <SContainer>
       <h1>Lista De Contatos</h1>
-      {contato.contatos.map((each: ContatoItemType) => (
+      {agenda.contatos.map((each: ContatoItemType) => (
         <ContatoItem
-          key={each.telefone}
+          key={each.id}
+          id={each.id}
           email={each.email}
           name={each.name}
           telefone={each.telefone}

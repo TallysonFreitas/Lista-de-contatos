@@ -3,7 +3,7 @@ import contatoSlice from './reducers/contato'
 
 const store = configureStore({
   reducer: {
-    contato: contatoSlice
+    agenda: contatoSlice
   }
 })
 
