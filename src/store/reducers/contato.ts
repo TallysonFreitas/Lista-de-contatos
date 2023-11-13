@@ -58,12 +58,20 @@ const contatoSlice = createSlice({
       const indexItem = state.contatos.findIndex(
         (each) => each.id === action.payload
       )
-      if (indexItem > 0) {
+      if (indexItem >= 0) {
         state.editando = state.contatos[indexItem]
+      }
+    },
+    salvar: (state, action: PayloadAction<ContatoItemType>) => {
+      const IndexItem = state.contatos.findIndex(
+        (each) => each.id === action.payload.id
+      )
+      if (IndexItem >= 0) {
+        state.contatos[IndexItem] = action.payload
       }
     }
   }
 })
 
 export default contatoSlice.reducer
-export const { adicionar, remover, editar } = contatoSlice.actions
+export const { adicionar, remover, editar, salvar } = contatoSlice.actions
