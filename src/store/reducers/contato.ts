@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ContatoItemType } from '../../components/ContatoItem/style'
 
-const editando = {
-  name: '?',
-  email: '?',
-  telefone: 0,
-  id: -1
-}
-
 const initialState = {
   contatos: [
     {
@@ -41,7 +34,12 @@ const initialState = {
       id: 5
     }
   ],
-  editando
+  editando: {
+    name: '?',
+    email: '?',
+    telefone: 12,
+    id: -1
+  }
 }
 
 const contatoSlice = createSlice({
@@ -63,4 +61,4 @@ const contatoSlice = createSlice({
 })
 
 export default contatoSlice.reducer
-export const { adicionar, remover } = contatoSlice.actions
+export const { adicionar, remover, editar } = contatoSlice.actions
