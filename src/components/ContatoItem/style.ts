@@ -24,6 +24,7 @@ export const ContainerContatoItem = styled.div`
 
 export const Name = styled.h3`
   font-size: 40px;
+  color: white;
 `
 
 export const CloseButton = styled.button`

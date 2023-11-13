@@ -7,4 +7,5 @@ export const SContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 16px;
 `
