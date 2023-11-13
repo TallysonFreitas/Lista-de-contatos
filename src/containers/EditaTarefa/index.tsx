@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
 import ListaDeContatos from '../ListaDeContatos'
 import {
+  Botao,
+  ButtonContainer,
   Container,
   ContainerBlur,
   EditaCard,
@@ -25,7 +27,7 @@ const EditaTarefa = () => {
       <EditaCard>
         <h2>Editar Contato</h2>
         <div>
-          <PreviusValue>nome</PreviusValue>
+          <PreviusValue>Nome:</PreviusValue>
           <InputNewValue
             type="text"
             value={name}
@@ -35,7 +37,7 @@ const EditaTarefa = () => {
           />
         </div>
         <div>
-          <PreviusValue>email</PreviusValue>
+          <PreviusValue>E-mail:</PreviusValue>
           <InputNewValue
             type="text"
             value={email}
@@ -45,9 +47,13 @@ const EditaTarefa = () => {
           />
         </div>
         <div>
-          <PreviusValue>telefone</PreviusValue>
+          <PreviusValue>Telefone:</PreviusValue>
           <InputNewValue type="number" value={telefone} />
         </div>
+        <ButtonContainer>
+          <Botao tipo="salvar">Salvar</Botao>
+          <Botao tipo="cancelar">Cancelar</Botao>
+        </ButtonContainer>
       </EditaCard>
       <ContainerBlur />
       <ListaDeContatos />

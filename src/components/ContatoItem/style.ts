@@ -58,4 +58,5 @@ export const EditButton = styled(CloseButton)`
   left: 8px;
   width: 60px;
   border-radius: 16px;
+  text-decoration: none;
 `

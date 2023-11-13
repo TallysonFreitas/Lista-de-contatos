@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export type TypeBotao = {
+  tipo: 'salvar' | 'cancelar'
+}
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -12,8 +16,7 @@ export const ContainerBlur = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  filter: blur(40px);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
 `
 
@@ -34,8 +37,34 @@ export const EditaCard = styled.div`
   left: 0;
   margin: auto;
   color: white;
+  padding: 24px 0px;
+  gap: 16px;
 `
 
-export const PreviusValue = styled.p``
+export const PreviusValue = styled.label`
+  display: block;
+  font-weight: bold;
+`
 
-export const InputNewValue = styled.input``
+export const InputNewValue = styled.input`
+  padding: 8px 16px;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 180px;
+  justify-content: space-between;
+`
+
+export const Botao = styled.button<TypeBotao>`
+  background-color: ${(props) => (props.tipo === 'salvar' ? '#5d5' : '#f44')};
+  border: none;
+  padding: 4px 16px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+`
