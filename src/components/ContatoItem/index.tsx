@@ -6,14 +6,23 @@ import {
   EditButton,
   Name
 } from './style'
-import { remover } from '../../store/reducers/contato'
+import { editar, remover } from '../../store/reducers/contato'
+import { Link } from 'react-router-dom'
 
 const ContatoItem = ({ name, email, telefone, id }: ContatoItemType) => {
   const dispatch = useDispatch()
 
   return (
     <ContainerContatoItem>
-      <EditButton>Editar</EditButton>
+      <EditButton
+        as={Link}
+        to={'/editar'}
+        onClick={() => {
+          dispatch(editar(id))
+        }}
+      >
+        Editar
+      </EditButton>
       <Name>{name}</Name>
       <p>{email}</p>
       <p>{telefone}</p>

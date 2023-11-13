@@ -54,8 +54,13 @@ const contatoSlice = createSlice({
         (each) => each.id !== action.payload
       )
     },
-    editar: (state, action: PayloadAction<ContatoItemType>) => {
-      state.editando = action.payload
+    editar: (state, action: PayloadAction<number>) => {
+      const indexItem = state.contatos.findIndex(
+        (each) => each.id === action.payload
+      )
+      if (indexItem > 0) {
+        state.editando = state.contatos[indexItem]
+      }
     }
   }
 })
