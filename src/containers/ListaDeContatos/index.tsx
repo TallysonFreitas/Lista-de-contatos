@@ -1,10 +1,13 @@
 import { useSelector } from 'react-redux'
 import ContatoItem from '../../components/ContatoItem'
-import { SContainer } from './style'
+import { SBotaoAdicionar, SContainer } from './style'
 import { RootReducer } from '../../store'
 import { ContatoItemType } from '../../components/ContatoItem/style'
+import { useNavigate } from 'react-router-dom'
 
 const ListaDeContatos = () => {
+  const navigate = useNavigate()
+
   const { agenda } = useSelector((state: RootReducer) => state)
   return (
     <SContainer>
@@ -18,6 +21,13 @@ const ListaDeContatos = () => {
           telefone={each.telefone}
         />
       ))}
+      <SBotaoAdicionar
+        onClick={() => {
+          navigate('/nova-tarefa')
+        }}
+      >
+        +
+      </SBotaoAdicionar>
     </SContainer>
   )
 }
