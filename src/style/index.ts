@@ -16,4 +16,20 @@ export const SContainer = styled.div`
   height: 100vh;
 `
 
+export const ContainerBlur = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+`
+
+export const ContainerPrincipal = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`
+
 export default EstiloGlobal

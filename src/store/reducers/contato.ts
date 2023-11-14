@@ -35,9 +35,15 @@ const initialState = {
     }
   ],
   editando: {
-    name: '?',
-    email: '?',
-    telefone: 12,
+    name: '',
+    email: '',
+    telefone: 0,
+    id: -1
+  },
+  criando: {
+    name: '',
+    email: '',
+    telefone: 0,
     id: -1
   }
 }

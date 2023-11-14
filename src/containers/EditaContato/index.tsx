@@ -3,19 +3,22 @@ import ListaDeContatos from '../ListaDeContatos'
 import {
   Botao,
   ButtonContainer,
-  Container,
-  ContainerBlur,
   EditaCard,
   InputNewValue,
   PreviusValue
 } from './style'
+import { ContainerBlur, ContainerPrincipal } from '../../style'
 import { useState } from 'react'
 import { RootReducer } from '../../store'
 import { ContatoItemType } from '../../components/ContatoItem/style'
-import { salvar } from '../../store/reducers/contato'
+import { adicionar, salvar } from '../../store/reducers/contato'
 import { useNavigate } from 'react-router-dom'
 
-const EditaTarefa = () => {
+type TypeEditaContato = {
+  tipo: 'editar' | 'salvar'
+}
+
+const EditaContato = ({ tipo }: TypeEditaContato) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -28,9 +31,9 @@ const EditaTarefa = () => {
   const [telefone, setTelefone] = useState(editando.telefone)
 
   return (
-    <Container>
+    <ContainerPrincipal>
       <EditaCard>
-        <h2>Editar Contato</h2>
+        <h2>{tipo == 'salvar' ? 'Criar Contato' : 'Editar Contato'}</h2>
         <div>
           <PreviusValue>Nome:</PreviusValue>
           <InputNewValue
@@ -66,23 +69,43 @@ const EditaTarefa = () => {
           />
         </div>
         <ButtonContainer>
-          <Botao
-            tipo="salvar"
-            onClick={(e) => {
-              dispatch(
-                salvar({
-                  name: name,
-                  email: email,
-                  telefone: telefone,
-                  id: editando.id
-                })
-              ),
-                navigate('/'),
-                e.preventDefault()
-            }}
-          >
-            Salvar
-          </Botao>
+          {tipo == 'salvar' ? (
+            <Botao
+              tipo="salvar"
+              onClick={(e) => {
+                dispatch(
+                  salvar({
+                    name: name,
+                    email: email,
+                    telefone: telefone,
+                    id: editando.id
+                  })
+                ),
+                  navigate('/'),
+                  e.preventDefault()
+              }}
+            >
+              Salvar
+            </Botao>
+          ) : (
+            <Botao
+              tipo="salvar"
+              onClick={(e) => {
+                dispatch(
+                  adicionar({
+                    name: name,
+                    email: email,
+                    telefone: telefone,
+                    id: editando.id
+                  })
+                ),
+                  navigate('/'),
+                  e.preventDefault()
+              }}
+            >
+              Editar
+            </Botao>
+          )}
           <Botao
             onClick={() => {
               navigate('/')
@@ -95,8 +118,8 @@ const EditaTarefa = () => {
       </EditaCard>
       <ContainerBlur />
       <ListaDeContatos />
-    </Container>
+    </ContainerPrincipal>
   )
 }
 
-export default EditaTarefa
+export default EditaContato

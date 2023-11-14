@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ListaDeContatos from './containers/ListaDeContatos'
 import EstiloGlobal, { SContainer } from './style'
-import EditaTarefa from './containers/EditaTarefa'
+import EditaContato from './containers/EditaContato'
 
 const rotas = createBrowserRouter([
   {
@@ -10,8 +10,9 @@ const rotas = createBrowserRouter([
   },
   {
     path: '/editar',
-    element: <EditaTarefa />
-  }
+    element: <EditaContato tipo={'editar'} />
+  },
+  { path: '/novo-contato', element: <EditaContato tipo={'salvar'} /> }
 ])
 
 function App() {

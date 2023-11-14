@@ -23,7 +23,7 @@ const ListaDeContatos = () => {
       ))}
       <SBotaoAdicionar
         onClick={() => {
-          navigate('/nova-tarefa')
+          navigate('/novo-contato')
         }}
       >
         +
