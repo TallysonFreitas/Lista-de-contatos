@@ -30,54 +30,99 @@ const EditaContato = ({ tipo }: TypeEditaContato) => {
   const [email, setEmail] = useState(editando.email)
   const [telefone, setTelefone] = useState(editando.telefone)
 
+  const [clearname, setClearname] = useState('')
+  const [clearemail, setClearemail] = useState('')
+  const [cleartelefone, setCleartelefone] = useState(0)
+
   return (
     <ContainerPrincipal>
       <EditaCard>
         <h2>{tipo == 'salvar' ? 'Criar Contato' : 'Editar Contato'}</h2>
-        <div>
-          <PreviusValue>Nome:</PreviusValue>
-          <InputNewValue
-            required
-            type="text"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value)
-            }}
-          />
-        </div>
-        <div>
-          <PreviusValue>E-mail:</PreviusValue>
-          <InputNewValue
-            required
-            type="text"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value)
-            }}
-          />
-        </div>
-        <div>
-          <PreviusValue>Telefone:</PreviusValue>
-          <InputNewValue
-            required
-            type="number"
-            value={telefone}
-            onChange={(e) => {
-              setTelefone(Number(e.target.value))
-            }}
-            maxLength={11}
-          />
-        </div>
+        {tipo == 'salvar' ? (
+          <>
+            <div>
+              <PreviusValue>Nome:</PreviusValue>
+              <InputNewValue
+                required
+                type="text"
+                value={clearname}
+                onChange={(e) => {
+                  setClearname(e.target.value)
+                }}
+              />
+            </div>
+            <div>
+              <PreviusValue>E-mail:</PreviusValue>
+              <InputNewValue
+                required
+                type="text"
+                value={clearemail}
+                onChange={(e) => {
+                  setClearemail(e.target.value)
+                }}
+              />
+            </div>
+            <div>
+              <PreviusValue>Telefone:</PreviusValue>
+              <InputNewValue
+                required
+                type="number"
+                value={cleartelefone}
+                onChange={(e) => {
+                  setCleartelefone(Number(e.target.value))
+                }}
+                maxLength={11}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <PreviusValue>Nome:</PreviusValue>
+              <InputNewValue
+                required
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value)
+                }}
+              />
+            </div>
+            <div>
+              <PreviusValue>E-mail:</PreviusValue>
+              <InputNewValue
+                required
+                type="text"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
+              />
+            </div>
+            <div>
+              <PreviusValue>Telefone:</PreviusValue>
+              <InputNewValue
+                required
+                type="number"
+                value={telefone}
+                onChange={(e) => {
+                  setTelefone(Number(e.target.value))
+                }}
+                maxLength={11}
+              />
+            </div>
+          </>
+        )}
         <ButtonContainer>
           {tipo == 'salvar' ? (
             <Botao
               tipo="salvar"
               onClick={(e) => {
                 dispatch(
-                  salvar({
-                    name: name,
-                    email: email,
-                    telefone: telefone,
+                  adicionar({
+                    name: clearname,
+                    email: clearemail,
+                    telefone: cleartelefone,
                     id: editando.id
                   })
                 ),
@@ -92,7 +137,7 @@ const EditaContato = ({ tipo }: TypeEditaContato) => {
               tipo="salvar"
               onClick={(e) => {
                 dispatch(
-                  adicionar({
+                  salvar({
                     name: name,
                     email: email,
                     telefone: telefone,
